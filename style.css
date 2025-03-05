@@ -92,7 +92,7 @@ body {
 input[type="text"] {
   width: 100%;
   padding: 12px 0px 12px 20px;
-  margin-top: 10px;
+  margin-top: 10px;-
   background-color: black;
   border-radius: 10px;
   border: 1px solid #23ff3d80;
