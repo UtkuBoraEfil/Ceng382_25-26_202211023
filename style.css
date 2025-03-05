@@ -23,10 +23,19 @@ body {
   height: 100vh;
 }
 
+.hidden{
+  display: none;
+}
+
 .pills {
   width: 400px;
   position: relative;
   top: 2.3rem;
+}
+
+.time{
+  line-height: 0%;
+  font-size: 2rem;
 }
 
 .login-button {

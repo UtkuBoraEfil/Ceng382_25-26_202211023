@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
+        
 </head>
 
 <body>
@@ -18,16 +19,19 @@
         <div class="pills-container">
             <img src="./public/images/pngegg.png" alt="pills" class="pills"></img>
         </div>
-        <form class="login">
+        <form class="login" id="loginForm">
+            <h3 class="time"  id="clock"></h3>
             <h2>Login to escape matrix</h2>
-                <input placeholder="Neo"  type="text" />
-                <input placeholder="choosen password" type="text" />
-                <button class="login-button">
+                <input placeholder="Neo" id="username"  type="text" />
+                <input placeholder="choosen password" id="password" type="text" />
+                <button onclick="storeCredentials(event)" class="login-button">
                     <p>Login</p>
                     <!-- <div class="red-pill"></div> -->
                 </button>
         </form>
     </div>
 </body>
+
+<script src="index.js"></script>
 
 </html>
