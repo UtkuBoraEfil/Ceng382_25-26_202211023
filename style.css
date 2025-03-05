@@ -1,0 +1,107 @@
+body {
+  padding: 0%;
+  margin: 0%;
+}
+
+.background-image {
+  background-image: url("./public/images/matrix.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.pills-container:hover ~ .background-image {
+  background-image: url("./public/images/matrix-still.png");
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.pills {
+  width: 400px;
+  position: relative;
+  top: 2.3rem;
+}
+
+.login-button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #23ff3d;
+  background-color: black;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 10px;
+  line-height: 0;
+}
+
+.login-button:hover {
+  background-color: #23ff3d;
+  color: black;
+  transition: all 0.4s ease-in;
+}
+
+
+
+.red-pill {
+  width: 40px;
+  height: 15px;
+  border-radius: 40%;
+  rotate: 45deg;
+  background: rgb(222, 90, 90);
+  background: linear-gradient(
+    79deg,
+    rgb(242, 83, 83) 37%,
+    rgba(190, 18, 18, 1) 97%
+  );
+  position: absolute;
+}
+
+.red-pill:hover {
+  scale: 1.1;
+  rotate: 35deg;
+}
+
+.login {
+  background-color: rgb(0, 0, 0);
+  padding: 40px;
+  border-radius: 10px;
+  border: 1px solid #23ff3d;
+  color: white;
+  text-align: center;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.login h2 {
+  font-size: 2rem;
+}
+
+.form-element {
+  padding: 5px 1rem;
+}
+
+
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 0px 12px 20px;
+  margin-top: 10px;
+  background-color: black;
+  border-radius: 10px;
+  border: 1px solid #23ff3d80;
+  color: white;
+  box-sizing: border-box; /* Added line */
+}
+
+input:focus {
+  outline: none;
+  border-color: #23ff3d;
+}
+
