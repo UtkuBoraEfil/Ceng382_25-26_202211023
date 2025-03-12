@@ -23,19 +23,10 @@ body {
   height: 100vh;
 }
 
-.hidden{
-  display: none;
-}
-
 .pills {
   width: 400px;
   position: relative;
   top: 2.3rem;
-}
-
-.time{
-  line-height: 0%;
-  font-size: 2rem;
 }
 
 .login-button {
@@ -114,3 +105,51 @@ input:focus {
   border-color: #23ff3d;
 }
 
+.table-container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#className {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.highlight {
+  background-color: yellow !important;
+}
