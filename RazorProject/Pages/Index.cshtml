@@ -1,0 +1,71 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Left Side: Form -->
+        <div class="col-md-4">
+            <h3>Add New Class</h3>
+            <form method="post" asp-page-handler="Add">
+                <div class="mb-3">
+                    <label class="form-label">Class Name</label>
+                    <input type="text" class="form-control" asp-for="NewClass.ClassName">
+                    <span class="text-danger" asp-validation-for="NewClass.ClassName"></span>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Student Count</label>
+                    <input type="number" class="form-control" asp-for="NewClass.StudentCount">
+                    <span class="text-danger" asp-validation-for="NewClass.StudentCount"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" asp-for="NewClass.Description"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Class</button>
+            </form>
+
+        </div>
+
+        <!-- Right Side: Table -->
+        <div class="col-md-8">
+            <h3>Class List</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Class Name</th>
+                        <th>Student Count</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ClassList)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.ClassName</td>
+                            <td>@item.StudentCount</td>
+                            <td>@item.Description</td>
+                            <td>
+                                <form method="post" asp-page-handler="Edit" class="d-inline">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                </form>
+                                <form method="post" asp-page-handler="Delete" class="d-inline">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
