@@ -8,45 +8,41 @@ namespace RazorProject.Pages
 {
     public class IndexModel : PageModel
     {
-        private static List<ClassInformationModel> _classList = new List<ClassInformationModel>
+        public List<ClassInformationTable> ClassList { get; set; } = new List<ClassInformationTable>();
+        public string FilterClassName { get; set; }
+        public int CurrentPage { get; set; } = 1;
+        public int TotalPages { get; set; }
+        public int PageSize { get; set; } = 10;
+
+        public void OnGet(string filterClassName, int currentPage = 1)
         {
-            new ClassInformationModel { Id = 1, ClassName = "Math", StudentCount = 30, Description = "Mathematics Class" },
-            new ClassInformationModel { Id = 2, ClassName = "Science", StudentCount = 25, Description = "Science Class" }
-        };
-
-        private static int _idCounter = _classList.Max(c => c.Id) + 1;
-
-        [BindProperty]
-        public ClassInformationModel NewClass { get; set; }
-        public List<ClassInformationModel> ClassList => _classList;
-
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostAdd()
-        {
-            if (!ModelState.IsValid)
+            // Generate synthetic data for testing
+            var allClasses = Enumerable.Range(1, 100).Select(i => new ClassInformationTable
             {
-                return Page();
+                Id = i,
+                ClassName = $"Class {i}",
+                StudentCount = i * 10,
+                Description = $"Description for Class {i}"
+            }).ToList();
+
+            // Apply filtering
+            if (!string.IsNullOrEmpty(filterClassName))
+            {
+                allClasses = allClasses
+                    .Where(c => c.ClassName.Contains(filterClassName, System.StringComparison.OrdinalIgnoreCase))
+                    .ToList();
             }
 
-            NewClass.Id = _idCounter++;
-            _classList.Add(NewClass);
-            NewClass = new ClassInformationModel(); // Reset the form
+            // Calculate pagination
+            TotalPages = (int)System.Math.Ceiling(allClasses.Count / (double)PageSize);
+            CurrentPage = currentPage < 1 ? 1 : currentPage > TotalPages ? TotalPages : currentPage;
 
-            return RedirectToPage();
-        }
+            ClassList = allClasses
+                .Skip((CurrentPage - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
 
-        public IActionResult OnPostDelete(int id)
-        {
-            var classToDelete = _classList.FirstOrDefault(c => c.Id == id);
-            if (classToDelete != null)
-            {
-                _classList.Remove(classToDelete);
-            }
-
-            return RedirectToPage();
+            FilterClassName = filterClassName;
         }
     }
 }
