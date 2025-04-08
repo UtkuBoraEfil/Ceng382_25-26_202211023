@@ -1,6 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
+    ViewData["Title"] = "Index";
 }
 
 <div class="container mt-4">
@@ -33,19 +34,41 @@
                     @foreach (var item in Model.ClassList)
                     {
                         <tr>
-                            <td>@item.ClassName</td>
-                            <td>@item.StudentCount</td>
-                            <td>@item.Description</td>
-                            <td>
-                                <form method="post" asp-page-handler="Edit" class="d-inline">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                            @if (Model.EditingId == item.Id)
+                            {
+                                <form method="post" asp-page-handler="Save">
+                                    <td>
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <input type="text" name="className" value="@item.ClassName" class="form-control form-control-sm" />
+                                    </td>
+                                    <td>
+                                        <input type="number" name="studentCount" value="@item.StudentCount" class="form-control form-control-sm" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="description" value="@item.Description" class="form-control form-control-sm" />
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success btn-sm">Save</button>
+                                        <a href="/" class="btn btn-secondary btn-sm">Cancel</a>
+                                    </td>
                                 </form>
-                                <form method="post" asp-page-handler="Delete" class="d-inline">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                            </td>
+                            }
+                            else
+                            {
+                                <td>@item.ClassName</td>
+                                <td>@item.StudentCount</td>
+                                <td>@item.Description</td>
+                                <td>
+                                    <form method="post" asp-page-handler="Edit" class="d-inline">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                    </form>
+                                    <form method="post" asp-page-handler="Delete" class="d-inline">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>
