@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using RazorProject.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace RazorProject.Pages
 {
@@ -27,6 +28,24 @@ namespace RazorProject.Pages
 
         public void OnGet(string filterClassName, int currentPage = 1)
         {
+            // Access control: Validate session and cookies
+            var sessionUsername = HttpContext.Session.GetString("username");
+            var sessionToken = HttpContext.Session.GetString("token");
+            var sessionId = HttpContext.Session.GetString("session_id");
+
+            var cookieUsername = Request.Cookies["username"];
+            var cookieToken = Request.Cookies["token"];
+            var cookieSessionId = Request.Cookies["session_id"];
+
+            if (sessionUsername == null || sessionToken == null || sessionId == null ||
+                cookieUsername == null || cookieToken == null || cookieSessionId == null ||
+                sessionUsername != cookieUsername || sessionToken != cookieToken || sessionId != cookieSessionId)
+            {
+                // Redirect to login page if validation fails
+                Response.Redirect("/Login");
+                return;
+            }
+
             // Apply filtering
             var filteredClasses = AllClasses;
             if (!string.IsNullOrEmpty(filterClassName))
@@ -48,24 +67,6 @@ namespace RazorProject.Pages
             FilterClassName = filterClassName;
         }
 
-        public IActionResult OnPostDelete(int id)
-        {
-            Console.WriteLine($"Deleting item with ID: {id}");
-            var itemToDelete = AllClasses.FirstOrDefault(c => c.Id == id);
-            if (itemToDelete != null)
-            {
-                AllClasses.Remove(itemToDelete); // Remove the item from the static list
-            }
-
-            return RedirectToPage();
-        }
-
-        public IActionResult OnPostEdit(int id)
-        {
-            EditingId = id; // Set the item being edited
-            return RedirectToPage();
-        }
-
         public IActionResult OnPostSave(int id, string className, int studentCount, string description)
         {
             var itemToEdit = AllClasses.FirstOrDefault(c => c.Id == id);
@@ -77,6 +78,12 @@ namespace RazorProject.Pages
             }
 
             EditingId = null; // Clear the editing state
+            return RedirectToPage();
+        }
+
+        public IActionResult OnPostEdit(int id)
+        {
+            EditingId = id; // Set the item being edited
             return RedirectToPage();
         }
 
@@ -108,6 +115,20 @@ namespace RazorProject.Pages
 
             var filteredJsonResult = Utils.Instance.ExportToJson(filteredData);
             return File(System.Text.Encoding.UTF8.GetBytes(filteredJsonResult), "application/json", "export.json");
+        }
+
+        public IActionResult OnPostLogout()
+        {
+            // Clear session
+            HttpContext.Session.Clear();
+
+            // Remove cookies
+            Response.Cookies.Delete("username");
+            Response.Cookies.Delete("token");
+            Response.Cookies.Delete("session_id");
+
+            // Redirect to login page
+            return RedirectToPage("/Login");
         }
     }
 }

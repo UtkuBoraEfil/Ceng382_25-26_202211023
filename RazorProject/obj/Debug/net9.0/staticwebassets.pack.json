@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/data/users.json",
+      "PackagePath": "staticwebassets/data/users.json"
+    },
+    {
       "Id": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },

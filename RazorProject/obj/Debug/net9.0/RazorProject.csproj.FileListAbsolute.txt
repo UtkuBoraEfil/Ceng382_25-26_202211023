@@ -96,3 +96,4 @@
 /Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/RazorProject.pdb
 /Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/RazorProject.genruntimeconfig.cache
 /Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/ref/RazorProject.dll
+/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/rsdxlsg9ns-6bdir2h131.gz

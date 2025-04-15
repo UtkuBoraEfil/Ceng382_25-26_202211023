@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "D6xvaOQZTRPK0NE8ZfFeUJEjf1q1uQRYXrBfomcLke0=",
+  "Hash": "zeItitg9qobmqMjxlRgtvebVIm5qTScYNkA4VF2pcwA=",
   "Source": "RazorProject",
   "BasePath": "_content/RazorProject",
   "Mode": "Default",
@@ -1109,6 +1109,27 @@
       "OriginalItemSpec": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/lib/bootstrap/dist/js/bootstrap.js"
     },
     {
+      "Identity": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/rsdxlsg9ns-6bdir2h131.gz",
+      "SourceId": "RazorProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/RazorProject",
+      "RelativePath": "data/users#[.{fingerprint=6bdir2h131}]?.json.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/data/users.json",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "quii614vym",
+      "Integrity": "DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/data/users.json"
+    },
+    {
       "Identity": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/s4ib2fk2nu-tdbxkamptv.gz",
       "SourceId": "RazorProject",
       "SourceType": "Discovered",
@@ -1422,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/data/users.json",
+      "SourceId": "RazorProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/",
+      "BasePath": "_content/RazorProject",
+      "RelativePath": "data/users#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6bdir2h131",
+      "Integrity": "4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/data/users.json"
     },
     {
       "Identity": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/favicon.ico",
@@ -3022,6 +3064,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-KbRAtTdCZlkPQMEP8615MCQRMWQsaAwQYpxvPAoetmA="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.6bdir2h131.json",
+      "AssetFile": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/rsdxlsg9ns-6bdir2h131.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005917159763"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 08:44:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6bdir2h131"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.6bdir2h131.json",
+      "AssetFile": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/data/users.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "436"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 08:44:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6bdir2h131"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.6bdir2h131.json.gz",
+      "AssetFile": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/rsdxlsg9ns-6bdir2h131.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 08:44:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6bdir2h131"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json",
+      "AssetFile": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/rsdxlsg9ns-6bdir2h131.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005917159763"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 08:44:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json",
+      "AssetFile": "/Users/utqbora/Documents/Web/ceng382/RazorProject/wwwroot/data/users.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "436"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 08:44:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4qZLIdOEej5H6SAu2axSrwWWFE2cE5fwNOWpEC+yc14="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json.gz",
+      "AssetFile": "/Users/utqbora/Documents/Web/ceng382/RazorProject/obj/Debug/net9.0/compressed/rsdxlsg9ns-6bdir2h131.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "168"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 08:44:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DmZuNpUMh9yXWI9VZP4qC2uGc5adzFyYBYOMNTacpSo="
         }
       ]
     },
