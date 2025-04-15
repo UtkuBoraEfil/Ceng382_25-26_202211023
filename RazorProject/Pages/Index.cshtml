@@ -97,4 +97,21 @@
             </nav>
         </div>
     </div>
+
+    <!-- Export and Column Selection -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <form method="post">
+                <div>
+                    <label>Select Columns:</label>
+                    <input type="checkbox" name="selectedColumns" value="Id" /> Id
+                    <input type="checkbox" name="selectedColumns" value="ClassName" /> Class Name
+                    <input type="checkbox" name="selectedColumns" value="StudentCount" /> Student Count
+                    <input type="checkbox" name="selectedColumns" value="Description" /> Description
+                </div>
+                <button type="submit" asp-page-handler="ExportJson" asp-route-isFiltered="true">Export Filtered to JSON</button>
+                <button type="submit" asp-page-handler="ExportJson" asp-route-isFiltered="false">Export All to JSON</button>
+            </form>
+        </div>
+    </div>
 </div>

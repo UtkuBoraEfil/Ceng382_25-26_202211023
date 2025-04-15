@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorProject.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using RazorProject.Helpers;
 
 namespace RazorProject.Pages
 {
@@ -76,6 +78,36 @@ namespace RazorProject.Pages
 
             EditingId = null; // Clear the editing state
             return RedirectToPage();
+        }
+
+        public IActionResult OnPostExportJson(bool isFiltered, List<string> selectedColumns)
+        {
+            var dataToExport = isFiltered ? ClassList : AllClasses;
+
+            // Include all columns if no specific columns are selected
+            if (selectedColumns == null || !selectedColumns.Any())
+            {
+                var jsonResult = Utils.Instance.ExportToJson(dataToExport);
+                return File(System.Text.Encoding.UTF8.GetBytes(jsonResult), "application/json", "export.json");
+            }
+
+            // Filter columns if specific columns are selected
+            var filteredData = dataToExport.Select(item =>
+            {
+                var filteredItem = new Dictionary<string, object>();
+                foreach (var column in selectedColumns)
+                {
+                    var property = typeof(ClassInformationTable).GetProperty(column);
+                    if (property != null)
+                    {
+                        filteredItem[column] = property.GetValue(item);
+                    }
+                }
+                return filteredItem;
+            }).ToList();
+
+            var filteredJsonResult = Utils.Instance.ExportToJson(filteredData);
+            return File(System.Text.Encoding.UTF8.GetBytes(filteredJsonResult), "application/json", "export.json");
         }
     }
 }
