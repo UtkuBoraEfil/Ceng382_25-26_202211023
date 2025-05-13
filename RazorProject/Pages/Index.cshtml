@@ -24,9 +24,11 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Class Name</th>
-                        <th>Student Count</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Person Count</th>
                         <th>Description</th>
+                        <th>Is Active</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -39,13 +41,16 @@
                                 <form method="post" asp-page-handler="Save">
                                     <td>
                                         <input type="hidden" name="id" value="@item.Id" />
-                                        <input type="text" name="className" value="@item.ClassName" class="form-control form-control-sm" />
+                                        <input type="text" name="name" value="@item.Name" class="form-control form-control-sm" />
                                     </td>
                                     <td>
-                                        <input type="number" name="studentCount" value="@item.StudentCount" class="form-control form-control-sm" />
+                                        <input type="number" name="personCount" value="@item.PersonCount" class="form-control form-control-sm" />
                                     </td>
                                     <td>
                                         <input type="text" name="description" value="@item.Description" class="form-control form-control-sm" />
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" name="isActive" @(item.IsActive ? "checked" : "") />
                                     </td>
                                     <td>
                                         <button type="submit" class="btn btn-success btn-sm">Save</button>
@@ -55,9 +60,11 @@
                             }
                             else
                             {
-                                <td>@item.ClassName</td>
-                                <td>@item.StudentCount</td>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.PersonCount</td>
                                 <td>@item.Description</td>
+                                <td>@(item.IsActive ? "Yes" : "No")</td>
                                 <td>
                                     <form method="post" asp-page-handler="Edit" class="d-inline">
                                         <input type="hidden" name="id" value="@item.Id" />
@@ -105,8 +112,8 @@
                 <div>
                     <label>Select Columns:</label>
                     <input type="checkbox" name="selectedColumns" value="Id" /> Id
-                    <input type="checkbox" name="selectedColumns" value="ClassName" /> Class Name
-                    <input type="checkbox" name="selectedColumns" value="StudentCount" /> Student Count
+                    <input type="checkbox" name="selectedColumns" value="Name" /> Name
+                    <input type="checkbox" name="selectedColumns" value="PersonCount" /> Person Count
                     <input type="checkbox" name="selectedColumns" value="Description" /> Description
                 </div>
                 <button type="submit" asp-page-handler="ExportJson" asp-route-isFiltered="true">Export Filtered to JSON</button>

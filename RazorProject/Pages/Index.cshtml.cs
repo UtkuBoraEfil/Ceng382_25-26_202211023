@@ -1,32 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using YourProjectNamespace.Data; // Ensure this namespace matches your project structure
+using YourProjectNamespace.Models; // Ensure this namespace matches your project structure
 using RazorProject.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using RazorProject.Helpers;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace RazorProject.Pages
 {
     public class IndexModel : PageModel
     {
-        private static List<ClassInformationTable> AllClasses = Enumerable.Range(1, 100).Select(i => new ClassInformationTable
-        {
-            Id = i,
-            ClassName = $"Class {i}",
-            StudentCount = i * 10,
-            Description = $"Description for Class {i}"
-        }).ToList();
+        private readonly SchoolDbContext _context;
 
-        public List<ClassInformationTable> ClassList { get; set; } = new List<ClassInformationTable>();
+        public IndexModel(SchoolDbContext context)
+        {
+            _context = context;
+        }
+
+        public List<Class> ClassList { get; set; } = new List<Class>();
         public string FilterClassName { get; set; } = string.Empty;
         public int CurrentPage { get; set; } = 1;
         public int TotalPages { get; set; }
         public int PageSize { get; set; } = 10;
         public int? EditingId { get; set; } // Nullable to indicate no item is being edited
 
-        public void OnGet(string filterClassName, int currentPage = 1)
+        public async Task OnGetAsync(string filterClassName, int currentPage = 1)
         {
             // Access control: Validate session and cookies
             var sessionUsername = HttpContext.Session.GetString("username");
@@ -47,34 +50,35 @@ namespace RazorProject.Pages
             }
 
             // Apply filtering
-            var filteredClasses = AllClasses;
+            var query = _context.Classes.AsQueryable();
             if (!string.IsNullOrEmpty(filterClassName))
             {
-                filteredClasses = filteredClasses
-                    .Where(c => c.ClassName.Contains(filterClassName, System.StringComparison.OrdinalIgnoreCase))
-                    .ToList();
+                query = query.Where(c => c.Name.Contains(filterClassName));
             }
 
             // Calculate pagination
-            TotalPages = (int)System.Math.Ceiling(filteredClasses.Count / (double)PageSize);
+            var totalItems = await query.CountAsync();
+            TotalPages = (int)Math.Ceiling(totalItems / (double)PageSize);
             CurrentPage = currentPage < 1 ? 1 : currentPage > TotalPages ? TotalPages : currentPage;
 
-            ClassList = filteredClasses
+            ClassList = await query
                 .Skip((CurrentPage - 1) * PageSize)
                 .Take(PageSize)
-                .ToList();
+                .ToListAsync();
 
             FilterClassName = filterClassName;
         }
 
         public IActionResult OnPostSave(int id, string className, int studentCount, string description)
         {
-            var itemToEdit = AllClasses.FirstOrDefault(c => c.Id == id);
+            var itemToEdit = _context.Classes.FirstOrDefault(c => c.Id == id);
             if (itemToEdit != null)
             {
-                itemToEdit.ClassName = className;
-                itemToEdit.StudentCount = studentCount;
+                itemToEdit.Name = className;
+                itemToEdit.PersonCount = studentCount;
                 itemToEdit.Description = description;
+
+                _context.SaveChanges(); // Save changes to the database
             }
 
             EditingId = null; // Clear the editing state
@@ -87,9 +91,9 @@ namespace RazorProject.Pages
             return RedirectToPage();
         }
 
-        public IActionResult OnPostExportJson(bool isFiltered, List<string> selectedColumns)
+        public async Task<IActionResult> OnPostExportJsonAsync(bool isFiltered, List<string> selectedColumns)
         {
-            var dataToExport = isFiltered ? ClassList : AllClasses;
+            var dataToExport = isFiltered ? ClassList : await _context.Classes.ToListAsync();
 
             // Include all columns if no specific columns are selected
             if (selectedColumns == null || !selectedColumns.Any())
@@ -104,7 +108,7 @@ namespace RazorProject.Pages
                 var filteredItem = new Dictionary<string, object>();
                 foreach (var column in selectedColumns)
                 {
-                    var property = typeof(ClassInformationTable).GetProperty(column);
+                    var property = typeof(Class).GetProperty(column);
                     if (property != null)
                     {
                         filteredItem[column] = property.GetValue(item);
@@ -132,3 +136,5 @@ namespace RazorProject.Pages
         }
     }
 }
+
+

@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using YourProjectNamespace.Data; // Ensure this namespace matches your project structure
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,10 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddDistributedMemoryCache(); // Required for session
+
+// Add and configure the database context
+builder.Services.AddDbContext<SchoolDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolDbConnection")));
 
 var app = builder.Build();
 
@@ -30,9 +37,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles(); // Ensure static files middleware is added
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
 
 app.Run();
